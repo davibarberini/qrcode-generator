@@ -4,6 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>QR Code Generator with Logo</title>
+
+    <!-- ======================= ADSENSE SCRIPT PLACEHOLDER START ======================= -->
+    <!-- TODO: Replace "YOUR_ADSENSE_PUBLISHER_ID" with your actual AdSense Publisher ID (e.g., ca-pub-1234567890123456) -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4652945967286879"
+      crossorigin="anonymous"
+    ></script>
+    <!-- ======================= ADSENSE SCRIPT PLACEHOLDER END ========================= -->
+
     <!-- Include qrcode.js library from CDN -->
     <script
       type="text/javascript"
@@ -11,7 +21,7 @@
     ></script>
 
     <style>
-      /* Basic Reset & Modern Font */
+      /* Styles remain the same as before - truncated for brevity */
       *,
       *::before,
       *::after {
@@ -19,11 +29,9 @@
         margin: 0;
         padding: 0;
       }
-
       body {
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-          Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-          "Segoe UI Symbol";
+          Helvetica, Arial, sans-serif;
         line-height: 1.6;
         background-color: #f4f7f9;
         color: #333;
@@ -33,8 +41,6 @@
         align-items: center;
         min-height: 100vh;
       }
-
-      /* Main Container */
       .container {
         background-color: #ffffff;
         padding: 30px 40px;
@@ -44,31 +50,32 @@
         width: 100%;
         text-align: center;
       }
-
       h1 {
         color: #2c3e50;
         margin-bottom: 25px;
         font-weight: 600;
       }
 
-      /* AdSense Placeholder */
+      /* AdSense Placeholder Div Styling (Container for the Ad Unit Code) */
       .adsense-placeholder {
-        background-color: #e9ecef;
-        border: 1px dashed #ced4da;
-        height: 90px;
+        /* background-color: #e9ecef; */ /* Optional: Keep background for testing before ads load */
+        /* border: 1px dashed #ced4da; */ /* Optional: Keep border for testing */
+        min-height: 90px; /* Minimum height, AdSense might resize */
+        width: 100%; /* Take full width of container */
+        max-width: 728px; /* Example max width for a leaderboard */
+        margin: 25px auto;
         display: flex;
         align-items: center;
         justify-content: center;
-        margin: 25px auto;
-        color: #6c757d;
-        font-size: 0.9em;
-        text-align: center;
-        padding: 10px;
-        max-width: 100%;
-        border-radius: 5px;
+        overflow: hidden; /* Prevent ad overflow */
+        text-align: center; /* Center fallback text */
+      }
+      /* Style for the <ins> tag itself, if needed */
+      .adsbygoogle {
+        display: block; /* Important for AdSense */
+        /* background-color: #f8f9fa; */ /* Light background for the ad area itself */
       }
 
-      /* Input & Preview Layout */
       .content-wrapper {
         display: flex;
         flex-direction: column;
@@ -76,9 +83,7 @@
         align-items: flex-start;
         width: 100%;
       }
-
       @media (min-width: 650px) {
-        /* Side-by-side on larger screens */
         .content-wrapper {
           flex-direction: row;
           align-items: flex-start;
@@ -91,26 +96,21 @@
           margin-left: 20px;
         }
       }
-
-      /* Input Section */
       .input-section {
         display: flex;
         flex-direction: column;
         gap: 15px;
         width: 100%;
       }
-
       .form-group {
         text-align: left;
       }
-
       label {
         display: block;
         margin-bottom: 8px;
         font-weight: 500;
         color: #495057;
       }
-
       textarea,
       input[type="file"] {
         width: 100%;
@@ -120,48 +120,41 @@
         font-size: 1rem;
         transition: border-color 0.2s ease;
       }
-
       textarea {
         min-height: 100px;
         resize: vertical;
       }
-
       textarea:focus,
       input[type="file"]:focus {
         outline: none;
         border-color: #80bdff;
         box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
       }
-
       input[type="file"] {
         padding: 5px;
         line-height: 1.8;
       }
-
-      /* Logo Preview */
       .logo-preview-container {
         text-align: left;
         margin-top: 5px;
-        height: 70px; /* Reserve space */
-        position: relative; /* For positioning clear button */
+        height: 70px;
+        position: relative;
       }
-
       #logoPreview {
         max-width: 60px;
         max-height: 60px;
         border-radius: 4px;
         border: 1px solid #eee;
-        display: none; /* Hidden initially */
+        display: none;
         margin-top: 5px;
         vertical-align: middle;
       }
-
       #clearLogoBtn {
         margin-left: 10px;
         padding: 3px 8px;
         font-size: 0.8em;
         cursor: pointer;
-        display: none; /* Hidden initially */
+        display: none;
         vertical-align: middle;
         background-color: #f1f1f1;
         border: 1px solid #ccc;
@@ -177,10 +170,7 @@
         margin-top: 5px;
         display: block;
       }
-
-      /* Buttons */
       button#generateBtn {
-        /* More specific selector */
         padding: 12px 25px;
         font-size: 1rem;
         font-weight: 500;
@@ -193,12 +183,9 @@
         margin-top: 10px;
         width: 100%;
       }
-
       button#generateBtn:hover {
         background-color: #0056b3;
       }
-
-      /* Preview Section */
       .preview-section {
         display: flex;
         flex-direction: column;
@@ -206,7 +193,6 @@
         gap: 15px;
         width: 100%;
       }
-
       h2 {
         color: #495057;
         font-weight: 500;
@@ -214,39 +200,36 @@
         text-align: center;
         width: 100%;
       }
-
       #qrcode {
-        width: 260px; /* Container size */
+        width: 260px;
         height: 260px;
         border: 1px solid #e0e0e0;
-        padding: 5px; /* Minimal padding */
+        padding: 5px;
         background-color: #fff;
         border-radius: 5px;
         display: flex;
         justify-content: center;
         align-items: center;
         margin-top: 10px;
-        position: relative; /* Needed if we absolute position things inside */
+        position: relative;
       }
-      /* Ensure canvas/img fills container padding */
       #qrcode canvas,
       #qrcode img {
         max-width: 100%;
         max-height: 100%;
         display: block;
       }
-
       #downloadBtn {
         background-color: #28a745;
-        padding: 12px 25px; /* Match generate button */
-        font-size: 1rem; /* Match generate button */
-        font-weight: 500; /* Match generate button */
-        border: none; /* Match generate button */
-        border-radius: 5px; /* Match generate button */
-        width: 100%; /* Match generate button */
-        cursor: pointer; /* Match generate button */
-        transition: background-color 0.2s ease; /* Match generate button */
-        color: #fff; /* Match generate button */
+        padding: 12px 25px;
+        font-size: 1rem;
+        font-weight: 500;
+        border: none;
+        border-radius: 5px;
+        width: 100%;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+        color: #fff;
       }
       #downloadBtn:hover {
         background-color: #218838;
@@ -255,8 +238,6 @@
         background-color: #cccccc;
         cursor: not-allowed;
       }
-
-      /* Footer */
       footer {
         margin-top: 40px;
         font-size: 0.9em;
@@ -276,14 +257,25 @@
     <div class="container">
       <h1>QR Code Generator</h1>
 
-      <!-- AdSense Placeholder Section -->
+      <!-- AdSense Ad Unit Placeholder -->
       <div class="adsense-placeholder">
-        <!-- YOUR ADSENSE CODE HERE -->
-        Ad Banner Placeholder (e.g., 728x90 or Responsive)
+        <!-- ======================= ADSENSE AD UNIT PLACEHOLDER START ======================= -->
+        <ins
+          class="adsbygoogle"
+          style="display: block"
+          data-ad-client="ca-pub-4652945967286879"
+          data-ad-slot="5150621418"
+          data-ad-format="auto"
+          data-full-width-responsive="true"
+        ></ins>
+        <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+        <!-- ======================= ADSENSE AD UNIT PLACEHOLDER END ========================= -->
       </div>
 
       <div class="content-wrapper">
-        <!-- Input Section -->
+        <!-- Input Section (remains the same) -->
         <div class="input-section">
           <div class="form-group">
             <label for="textInput">Text or URL:</label>
@@ -292,8 +284,6 @@
               placeholder="Enter the text or URL you want to encode..."
             ></textarea>
           </div>
-
-          <!-- Logo Input -->
           <div class="form-group">
             <label for="logoInput">Optional Logo Image:</label>
             <input
@@ -305,20 +295,17 @@
               <img id="logoPreview" alt="Logo Preview" />
               <button id="clearLogoBtn">Clear</button>
               <span class="logo-tip"
-                >Tip: Use a square image (e.g., 100x100px). Logo reduces QR
-                readability.</span
+                >Tip: Use a square image. Logo reduces QR readability.</span
               >
             </div>
           </div>
-
           <button id="generateBtn">Generate QR Code</button>
         </div>
 
-        <!-- Preview Section -->
+        <!-- Preview Section (remains the same) -->
         <div class="preview-section">
           <h2>Preview</h2>
           <div id="qrcode">
-            <!-- QR code canvas will be generated here -->
             <span style="color: #aaa">QR code will appear here</span>
           </div>
           <button id="downloadBtn" disabled>Download QR Code</button>
@@ -339,7 +326,8 @@
     </footer>
 
     <script>
-      // Wait for the entire window to load
+      // All the JavaScript for QR code generation and logo handling remains the same
+      // from the previous version. It does not need to interact with AdSense directly.
       window.addEventListener("load", (event) => {
         if (typeof QRCode === "undefined") {
           alert("Critical Error: QR Code library (qrcode.js) failed to load.");
@@ -358,9 +346,9 @@
         const qrcodeContainer = document.getElementById("qrcode");
         const downloadBtn = document.getElementById("downloadBtn");
 
-        let currentQRCodeInstance = null; // Holds the qrcode.js instance (less critical now)
-        let logoFile = null; // Holds the logo File object or data URL
-        let generatedCanvas = null; // Holds the final canvas element displayed in #qrcode
+        let currentQRCodeInstance = null;
+        let logoFile = null;
+        let generatedCanvas = null;
 
         // --- Logo Handling ---
         logoInput.addEventListener("change", handleLogoSelect);
@@ -371,17 +359,15 @@
           if (file && file.type.startsWith("image/")) {
             const reader = new FileReader();
             reader.onload = function (e) {
-              logoFile = e.target.result; // Store data URL
+              logoFile = e.target.result;
               logoPreview.src = logoFile;
               logoPreview.style.display = "inline-block";
               clearLogoBtn.style.display = "inline-block";
-              // If QR code exists, regenerate with logo
               if (
                 generatedCanvas ||
                 qrcodeContainer.querySelector("canvas") ||
                 qrcodeContainer.querySelector("img")
               ) {
-                // Regenerate only if there's text present
                 if (textInput.value.trim()) {
                   generateQRCode();
                 }
@@ -394,22 +380,19 @@
             reader.readAsDataURL(file);
           } else {
             if (file) {
-              // If a file was selected but wasn't an image
               alert("Please select a valid image file (PNG, JPG, GIF).");
             }
-            clearLogo(); // Clear if invalid or no file
+            clearLogo();
           }
         }
 
         function clearLogo() {
-          const needsRegeneration = !!logoFile; // Check if a logo was actually set before clearing
+          const needsRegeneration = !!logoFile;
           logoFile = null;
-          logoInput.value = ""; // Clear the file input visually
+          logoInput.value = "";
           logoPreview.src = "";
           logoPreview.style.display = "none";
           clearLogoBtn.style.display = "none";
-          // If QR code exists and we just removed a logo, regenerate without logo
-          // Only regenerate if there's text present
           if (
             (generatedCanvas ||
               qrcodeContainer.querySelector("canvas") ||
@@ -419,7 +402,6 @@
           ) {
             generateQRCode();
           } else if (!textInput.value.trim()) {
-            // Also clear preview if text is empty
             qrcodeContainer.innerHTML =
               '<span style="color: #aaa;">QR code will appear here</span>';
             downloadBtn.disabled = true;
@@ -438,41 +420,31 @@
             textInput.focus();
             return;
           }
-
-          // Clear previous QR code and reset state
           qrcodeContainer.innerHTML = "";
-          generatedCanvas = null; // Reset final canvas reference
+          generatedCanvas = null;
           downloadBtn.disabled = true;
-          currentQRCodeInstance = null; // Reset instance
-
-          // Display placeholder
+          currentQRCodeInstance = null;
           const placeholder = document.createElement("span");
           placeholder.style.color = "#aaa";
           placeholder.textContent = "Generating...";
           qrcodeContainer.appendChild(placeholder);
 
           try {
-            // 1. Generate Base QR Code using qrcode.js (might add img/canvas to container)
             currentQRCodeInstance = new QRCode(qrcodeContainer, {
               text: text,
-              width: 250, // Target size for the QR code drawing
+              width: 250,
               height: 250,
               colorDark: "#000000",
               colorLight: "#ffffff",
-              correctLevel: QRCode.CorrectLevel.H, // High correction level is crucial for logos
+              correctLevel: QRCode.CorrectLevel.H,
             });
 
-            // Short delay to allow qrcode.js to render the canvas/img
             setTimeout(() => {
-              // Find the elements generated by qrcode.js
               const originalCanvas = qrcodeContainer.querySelector("canvas");
               const originalImg = qrcodeContainer.querySelector("img");
-
-              // Determine the source element (prefer canvas)
               let sourceElement = originalCanvas || originalImg;
 
               if (!sourceElement) {
-                // Clear placeholder if generation failed completely
                 const currentPlaceholder =
                   qrcodeContainer.querySelector("span");
                 if (
@@ -486,22 +458,17 @@
                 );
               }
 
-              // Create our definitive canvas to display and draw on
               generatedCanvas = document.createElement("canvas");
-              generatedCanvas.width = 250; // Match generation size
+              generatedCanvas.width = 250;
               generatedCanvas.height = 250;
               const ctx = generatedCanvas.getContext("2d");
 
-              // Draw the content from qrcode.js (canvas or img) onto our canvas
               try {
-                // Ensure image is loaded before drawing if it's an img element
                 if (
                   sourceElement.tagName === "IMG" &&
                   !sourceElement.complete
                 ) {
-                  console.log(
-                    "Waiting for generated image to load before drawing..."
-                  );
+                  console.log("Waiting for generated image to load...");
                   sourceElement.onload = () => {
                     ctx.drawImage(
                       sourceElement,
@@ -510,7 +477,7 @@
                       generatedCanvas.width,
                       generatedCanvas.height
                     );
-                    processCanvasAfterDrawing(); // Continue processing after image loads
+                    processCanvasAfterDrawing();
                   };
                   sourceElement.onerror = () => {
                     throw new Error("Generated image failed to load.");
@@ -523,17 +490,17 @@
                     generatedCanvas.width,
                     generatedCanvas.height
                   );
-                  processCanvasAfterDrawing(); // Process immediately if canvas or img already loaded
+                  processCanvasAfterDrawing();
                 }
               } catch (drawError) {
                 console.error(
                   "Error drawing generated QR code onto final canvas:",
                   drawError
                 );
-                qrcodeContainer.innerHTML = ""; // Clear placeholder etc.
+                qrcodeContainer.innerHTML = "";
                 throw new Error("Failed to process generated QR code image.");
               }
-            }, 100); // Delay for qrcode.js rendering
+            }, 100);
           } catch (error) {
             console.error("QR Code generation failed:", error);
             qrcodeContainer.innerHTML = `<span style="color: red;">Error: ${
@@ -544,47 +511,35 @@
           }
         }
 
-        // Helper function to avoid code duplication after drawing QR image to canvas
         function processCanvasAfterDrawing() {
-          // *** Crucial Step: Update the preview container ***
-          qrcodeContainer.innerHTML = ""; // Clear whatever qrcode.js put there/placeholder
-          qrcodeContainer.appendChild(generatedCanvas); // Add OUR canvas
-
-          // Now, if a logo exists, draw it onto the canvas we just appended
+          qrcodeContainer.innerHTML = "";
+          qrcodeContainer.appendChild(generatedCanvas);
           if (logoFile) {
-            drawLogoOnCanvas(); // This will now modify the visible canvas
+            drawLogoOnCanvas();
           } else {
-            // No logo, enable download for the base QR code (already visible)
             downloadBtn.disabled = false;
             console.log("Base QR Code generated and displayed (no logo).");
           }
         }
 
         function drawLogoOnCanvas() {
-          // Must have the final canvas and logo data
           if (!generatedCanvas || !logoFile) {
             console.warn(
               "Attempted to draw logo, but canvas or logo file is missing."
             );
-            // Enable download for base QR code if canvas exists but logo failed somehow
             if (generatedCanvas) downloadBtn.disabled = false;
             return;
           }
-
-          // Disable download until logo is drawn successfully
           downloadBtn.disabled = true;
-
           const ctx = generatedCanvas.getContext("2d");
           const logoImage = new Image();
 
           logoImage.onload = () => {
             try {
-              // Wrap drawing operations in try-catch
               const qrCodeSize = generatedCanvas.width;
               const logoTargetSize = qrCodeSize * 0.28;
               let logoDrawWidth = logoTargetSize;
               let logoDrawHeight = logoTargetSize;
-
               const aspectRatio =
                 logoImage.naturalWidth / logoImage.naturalHeight;
               if (aspectRatio > 1) {
@@ -592,10 +547,8 @@
               } else {
                 logoDrawWidth = logoTargetSize * aspectRatio;
               }
-
               const dx = (qrCodeSize - logoDrawWidth) / 2;
               const dy = (qrCodeSize - logoDrawHeight) / 2;
-
               const bgPadding = 4;
               ctx.fillStyle = "#FFFFFF";
               ctx.fillRect(
@@ -604,41 +557,32 @@
                 logoDrawWidth + bgPadding * 2,
                 logoDrawHeight + bgPadding * 2
               );
-
               ctx.drawImage(logoImage, dx, dy, logoDrawWidth, logoDrawHeight);
-
               console.log("Logo drawn onto QR Code canvas.");
-              downloadBtn.disabled = false; // Enable download *after* successful logo drawing
+              downloadBtn.disabled = false;
             } catch (drawingError) {
               console.error("Error drawing logo onto canvas:", drawingError);
-              alert(
-                "An error occurred while drawing the logo onto the QR code."
-              );
-              // Enable download for the base QR code even if logo drawing failed
+              alert("An error occurred while drawing the logo.");
               downloadBtn.disabled = false;
             }
           };
-
           logoImage.onerror = () => {
             console.error("Failed to load logo image for drawing.");
             alert(
               "Error loading the logo image. Displaying QR code without logo."
             );
-            // Enable download for the base QR code if logo fails to load
             downloadBtn.disabled = false;
           };
-
           logoImage.src = logoFile;
         }
 
         // --- Download Functionality ---
         downloadBtn.addEventListener("click", () => {
           if (generatedCanvas) {
-            // Check the final canvas reference
             const dataUrl = generatedCanvas.toDataURL("image/png");
             const link = document.createElement("a");
             link.href = dataUrl;
-            link.download = logoFile ? "qrcode_with_logo.png" : "qrcode.png"; // Change filename if logo exists
+            link.download = logoFile ? "qrcode_with_logo.png" : "qrcode.png";
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
